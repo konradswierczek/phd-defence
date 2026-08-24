@@ -1,0 +1,10 @@
+---
+title: ""
+subtitle: "" 
+author: Konrad Swierczek
+format: revealjs
+project:
+  output-dir: _site
+---
+
+
