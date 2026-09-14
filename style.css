@@ -1,0 +1,128 @@
+#buzzwords {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  overflow: visible; /* Allow elements to overflow */
+}
+.buzzword {
+  position: absolute;
+  opacity: 0; /* Hidden initially */
+  font-size: 1em;
+  color: #a72312;
+  font-weight: bold;
+  transition: opacity 0.5s ease-in-out; /* Smooth appearance */
+  white-space: nowrap; /* Prevent line breaking */
+}
+.buzzword.visible {
+  opacity: 1; /* Set to visible */
+}
+
+.centered-text {
+  position: fixed; /* Position fixed to keep it on screen */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -40%); /* Adjust to center */
+  z-index: 100; /* Ensure it's on top of other content */
+  font-size: 3em; /* Adjust font size as needed */
+  color: white; /* Text color */
+  background-color: rgba(0, 0, 0, 0.966); /* Semi-transparent background */
+  padding: 50px; /* Padding for readability */
+  border-radius: 10px; /* Rounded corners */
+  text-align: center;
+}
+
+.reveal .slide-logo {
+   max-height: 2em !important;
+}
+
+.top-right-image {
+  position: absolute !important;
+  top: -20px !important;
+  right: -150px !important;
+  width: 200px !important;
+  height: 200px !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.reveal .citation {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  font-size: 0.5em;
+  color: #666;
+  z-index: 10;
+}
+
+.center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* horizontal centering */
+  justify-content: center;  /* vertical centering */
+  text-align: center;
+}
+
+.bottom-left-box {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  background-color: #8b0000;
+  color: white;
+
+  padding: 12px 20px;
+  border-radius: 10px;
+
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.report-box {
+
+  background-color: #8b0000;
+  color: white;
+
+  padding: 12px 20px;
+  border-radius: 10px;
+
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.bottom-left-box-3 {
+  position: absolute;
+  bottom: 140px;
+  left: 30px;
+
+  background-color: #6495ED;
+  color: white;
+
+  padding: 12px 20px;
+  border-radius: 10px;
+
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.bottom-left-box-2 {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+
+  background-color: #6495ED;
+  color: white;
+
+  padding: 12px 20px;
+  border-radius: 10px;
+
+  font-size: 0.8em;
+  font-weight: normal;
+}

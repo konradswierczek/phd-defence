@@ -1,10 +1,501 @@
 ---
-title: ""
-subtitle: "" 
+title: "Chasing Wild Horses"
+subtitle: "Towards Robust Music Content Analysis" 
 author: Konrad Swierczek
-format: revealjs
+format:
+  revealjs:
+    logo: img/logo.png
+    slide-number: true
 project:
   output-dir: _site
+css: style.css
 ---
 
+## Algorithms Everywhere!
 
+::: {.fragment .fade-in}
+<div id="buzzwords">
+  <span class="buzzword" style="top: 1%; left: -10%;">Artificial Intelligence</span>
+  <span class="buzzword" style="top: 5%; left: 43%;">Agents</span>
+  <span class="buzzword" style="top: 10%; left: 68%;">Large Language Model</span>
+
+  <span class="buzzword" style="top: 15%; left: 22%;">Machine Learning</span>
+  <span class="buzzword" style="top: 20%; left: 72%;">Deep Learning</span>
+
+  <span class="buzzword" style="top: 25%; left: 5%;">Neural Network</span>
+  <span class="buzzword" style="top: 30%; left: 48%;">Chatbot</span>
+
+  <span class="buzzword" style="top: 35%; left: 3%;">Unsupervised Learning</span>
+  <span class="buzzword" style="top: 40%; left: 55%;">Natural Language Processing</span>
+
+  <span class="buzzword" style="top: 45%; left: 25%;">Generative AI</span>
+  <span class="buzzword" style="top: 50%; left: 65%;">Reinforcement Learning</span>
+</div>
+:::
+
+::: {.fragment .fade-in}
+<div class="centered-text">It's All About Prediction!</div>
+:::
+
+:::{.notes}
+- My work is focused on music... However, keep in mind...
+- We are increasingly driven by algorithms in all aspects of life
+- The terminology and diversity of techniques can make your head spin
+- From linear regression through to the transformers that drive ChatGPT I would argue there is a common link: It's all about prediction!
+- What is prediction?
+- As we focus in on specific algorithms, I want to encourage folks to keep this larger context in mind
+:::
+
+## Music Information Retreival (MIR)
+<div class="fragment" style="font-size: 70%; font-style: italic;">
+"Extracting meaningful information from musical representations."
+</div>
+
+:::: {.columns}
+:::{.column width="25%"}
+![](img/goal_analyze.png){height="200" .fragment}
+:::
+
+:::{.column width="25%"}
+![](img/goal_classify.png){height="200" .fragment}
+:::
+
+:::{.column width="25%"}
+![](img/goal_reccommend.png){height="200" .fragment}
+:::
+
+:::{.column width="25%"}
+![](img/goal_generate.png){height="200" .fragment}
+:::
+::::
+
+:::: {.columns}
+::: {.column width="50%" style="text-align: center;"}
+![](img/goal_music.png){height="200" .fragment}
+:::
+
+::: {.column width="50%" style="text-align: center;"}
+![](img/goal_audio.png){height="200" .fragment}
+:::
+::::
+
+## Applying MIR to Music Research
+<img src="img/goal_analyze.png" class="top-right-image">
+
+::::{.columns}
+:::{.column width="50%" .fragment}
+![Cam Anderson](img/applying_cam.jpg){width=200}
+
+![](img/applying_cam2.png){width=250}
+:::
+
+:::{.column width="50%" .fragment}
+![Aditi Shukla](img/applying_aditi.png){width=210}
+
+![](img/applying_aditi2.png){width=400}
+:::
+::::
+
+
+:::{.notes}
+- Supporting my colleagues who are doing great work understanding what aspects of music contribute to musical emotion
+- For instance...
+:::
+
+## Predicting Loudness
+<img src="img/goal_analyze.png" class="top-right-image">
+
+:::{.fragment}
+![J.S. Bach: *Prelude in C Major*](img/example_snippet.png)
+:::
+
+::::{.columns}
+:::{.column width="20%"}
+![](img/itu.png){.fragment}
+
+:::
+
+:::{.column width="40%"}
+<div class="fragment" style="text-align:center;">
+  <img src="img/example_demus.jpg" width="200">
+
+  <audio controls>
+    <source src="etc/audio/Bach_1_Demus_0_Major_bachDemus1956.wav" type="audio/wav">
+  </audio>
+</div>
+
+<div class="fragment" style="text-align:center">
+  QUIETER
+</div>
+:::
+
+:::{.column width="40%"}
+<div class="fragment" style="text-align:center;">
+  <img src="img/example_barenboim.jpg" width="200">
+
+  <audio controls>
+    <source src="etc/audio/Bach_1_Barenboim_0_Major_bachBarenboim2003.wav" type="audio/wav">
+  </audio>
+</div>
+
+<div class="fragment" style="text-align:center">
+  LOUDER
+</div>
+:::
+::::
+
+## Predicting Musical Mode
+<img src="img/goal_analyze.png" class="top-right-image">
+
+![J.S. Bach: *Prelude in C Major*](img/example_snippet.png)
+
+::::{.columns}
+:::{.column width="20%"}
+![](img/mirtoolbox.png)
+
+:::
+
+:::{.column width="40%"}
+<div class="fragment" style="text-align:center;">
+  <img src="img/example_demus.jpg" width="200">
+
+  <audio controls>
+    <source src="etc/audio/Bach_1_Demus_0_Major_bachDemus1956.wav" type="audio/wav">
+  </audio>
+</div>
+
+<div class="fragment" style="text-align:center; color:red;">
+  MAJOR
+</div>
+:::
+
+:::{.column width="40%"}
+<div class="fragment" style="text-align:center;">
+  <img src="img/example_barenboim.jpg" width="200">
+
+  <audio controls>
+    <source src="etc/audio/Bach_1_Barenboim_0_Major_bachBarenboim2003.wav" type="audio/wav">
+  </audio>
+</div>
+
+<div class="fragment" style="text-align:center; color:cornflowerblue;">
+  MINOR
+</div>
+:::
+::::
+
+::: {.fragment .fade-in}
+<div class="centered-text">Is it trustworthy?</div>
+:::
+
+## Evaluating MIR: Accuracy
+::::{.columns}
+:::{.column width="50%" .fragment}
+![](img/itu.png){width=75}
+
+![](img/accuracy_itu.png){width=500}
+
+:::
+
+::: {.citation .fragment}
+International Telecommunication Union (2015)
+:::
+
+:::{.column width="50%" .fragment}
+![](img/mirtoolbox.png){width=200}
+
+![](img/question.png){width=200}
+
+:::
+::::
+
+::: {.fragment .fade-in}
+<div class="centered-text">What's correct?</div>
+:::
+
+## Evaluating MIR: Robustness
+<div class="fragment" style="font-size: 70%; font-style: italic;">
+"The stability of an algorithm to changes that are irrelevant to the prediction"
+</div>
+
+::: {.r-stack}
+![](img/robustness_1.png){.fragment width=500}
+
+![](img/robustness_2.png){.fragment width=500}
+
+![](img/robustness_3.png){.fragment width=500}
+
+![](img/robustness_4.png){.fragment width=500}
+
+![](img/robustness_5.png){.fragment width=500}
+
+![](img/robustness_6.png){.fragment width=500}
+:::
+
+::: {.bottom-left-box .fragment}
+**REPORT NOTE:** Equivariance vs. Robustness
+:::
+
+## Evaluating MIR: Robustness
+<div style="font-size: 70%; font-style: italic;">
+
+"The stability of an algorithm to changes that are irrelevant to the prediction"
+
+</div>
+
+::::{.columns}
+:::{.column width="50%" .fragment}
+![](img/techniques_vbv.png){width=300}
+
+Variation Between Versions
+:::
+
+:::{.column width="50%" .fragment}
+![](img/techniques_ia.png){width=300}
+
+Instability Audit
+:::
+::::
+
+## Variation Between Versions
+<img src="img/techniques_vbv.png" class="top-right-image">
+
+::: {.r-stack}
+
+![](img/mode_3.png){.fragment}
+
+![](img/mode_4.png){.fragment}
+
+![](img/mode_5.png){.fragment}
+:::
+
+## Predicting Musical Mode
+<img src="img/goal_analyze.png" class="top-right-image">
+
+![J.S. Bach: *Prelude in C Major*](img/example_snippet.png)
+
+## Predicting Musical Mode:  <span style="color: #d50000ff;">IMPROVED</span>
+<img src="img/goal_analyze.png" class="top-right-image">
+
+![J.S. Bach: *Prelude in C Major*](img/example_snippet.png)
+
+::::{.columns}
+:::{.column width="20%"}
+![](img/librosa.png){.fragment}
+
+:::
+
+:::{.column width="40%" .fragment}
+<div style="text-align:center;">
+  <img src="img/example_demus.jpg" width="200">
+
+  <audio controls>
+    <source src="etc/audio/Bach_1_Demus_0_Major_bachDemus1956.wav" type="audio/wav">
+  </audio>
+</div>
+
+<div style="text-align:center; color:red;">
+  MAJOR
+</div>
+:::
+
+:::{.column width="40%"}
+<div class="fragment" style="text-align:center;">
+  <img src="img/example_barenboim.jpg" width="200">
+
+  <audio controls>
+    <source src="etc/audio/Bach_1_Barenboim_0_Major_bachBarenboim2003.wav" type="audio/wav">
+  </audio>
+</div>
+
+<div class="fragment" style="text-align:center; color:red;">
+  MAJOR
+</div>
+:::
+::::
+
+## Instability Audit
+<img src="img/techniques_ia.png" class="top-right-image">
+
+## Instability Audit
+<img src="img/techniques_ia.png" class="top-right-image">
+
+:::: {.r-stack}
+
+![](img/figure_1a.png){.fragment}
+
+![](img/figure_1b.png){.fragment}
+
+![](img/figure_1c.png){.fragment}
+
+![](img/figure_1d.png){.fragment}
+
+:::: 
+
+![](img/bach-1_M10_snippet.png){.absolute bottom=40}
+
+[J.S. Bach: *Prelude in B-Flat Major*]{style="font-size: 0.5em;"}
+
+## Moving Forward
+
+::::{.columns}
+:::{.column width="25%"}
+![](img/take_awareness.png){.fragment width=300}
+:::
+
+:::{.column width="25%"}
+![](img/take_evaluation.png){.fragment width=300}
+:::
+
+:::{.column width="25%"}
+![](img/take_expanding.png){.fragment width=300}
+:::
+
+:::{.column width="25%"}
+![](img/take_universal.png){.fragment width=300}
+:::
+::::
+
+:::{.notes}
+- I want to spend the rest of this presentation talking about what we've learned and contributed, but also what this means for the future of the research
+:::
+
+## Many Users Are Unaware of Issues
+<img src="img/take_awareness.png" class="top-right-image">
+
+:::{.incremental}
+- Drawing attention to long standing issues
+- Older tools remain popular among music researchers
+- "What do you mean it doesn't work perfectly?"
+:::
+
+::: {.bottom-left-box-2 .fragment}
+Robustness studies help raise awareness
+:::
+
+## Always Be Testing!
+<img src="img/take_evaluation.png" class="top-right-image">
+
+:::{.incremental}
+- Tools are constantly changing
+- Developers can only test on limited datasets
+- Let's build a strong, inter-disciplinary culture of evaluation!
+- New approaches are valuable
+  - and **NEEDED**
+:::
+
+::: {.bottom-left-box-2 .fragment}
+Instability Audits afford accessible testing.
+:::
+
+## Improving The Techniques We Have
+<img src="img/take_expanding.png" class="top-right-image">
+
+:::{.incremental}
+- More realistic generated audio is within reach!
+- Interactions of transformations
+- How robust do features need to be?
+- More features! [More transformations!]{.fragment} [More MIDI files!]{.fragment}
+:::
+
+::: {.bottom-left-box-3 .fragment}
+Instability Audits have so much potential!
+:::
+
+::: {.bottom-left-box .fragment}
+**REPORT NOTE:** Mechanistic vs. Black Box
+:::
+
+:::{.notes}
+- We used simple soundfonts to keep it open source
+- technologies like VST could make really high quality audio, not to mention running evaluations in LIVELab
+
+- We've looked at single transformations: what about interactions?
+- I have some ideas about using monte-carlo style simulations...
+:::
+
+## No Tool Is Universal
+<img src="img/take_universal.png" class="top-right-image">
+
+:::{.incremental}
+- Different music requires different solutions
+- Tradeoffs: *"There ain't no such thing as a free lunch"*
+- Users should consider creating tests for their use case
+:::
+
+::: {.bottom-left-box-2 .fragment}
+IA only requires an understanding of musical properties.
+:::
+
+## Moving Forward
+
+::::{.columns}
+:::{.column width="25%"}
+![](img/take_awareness.png){width=300}
+:::
+
+:::{.column width="25%"}
+![](img/take_evaluation.png){width=300}
+:::
+
+:::{.column width="25%"}
+![](img/take_expanding.png){width=300}
+:::
+
+:::{.column width="25%"}
+![](img/take_universal.png){width=300}
+:::
+::::
+
+## Thank You!
+
+::::{.columns}
+
+:::{.column width="70%"}
+![](img/tu_lab.jpg){width=500}
+
+![](img/tu_logos.png)
+:::
+
+:::{.column width="30%"}
+<div style="text-align: center;">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+     style="width: 25%; display: block; margin: 0 auto -10px auto;">
+
+<img src="img/qr.png"
+     style="width: 75%; display: block; margin: 0 auto;">
+
+<a href="https://github.com/konradswierczek/phd-defence"
+   style="display: block; margin-top: -20px; font-size: 0.4em;">
+  github.com/konradswierczek/phd-defence
+</a>
+
+</div>
+:::
+::::
+
+:::{.notes}
+- Matthew
+- Mike
+- Committee
+- MAPLE Lab
+- MIMM
+- Family
+:::
+
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buzzwords = document.querySelectorAll('#buzzwords .buzzword');
+  buzzwords.forEach((buzzword, index) => {
+    // Set a longer initial delay based on the index
+    const delay = (index + 1) * 1000; // 1 second for the first word, 2 seconds for the second, etc.
+    setTimeout(() => {
+      // Make each buzzword visible
+      buzzword.classList.add('visible');
+    }, delay);
+  });
+});
+</script>

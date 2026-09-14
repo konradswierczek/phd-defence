@@ -10,6 +10,7 @@ services:
     command: sleep infinity
 
   render:
+    user: "${UID:-1000}:${GID:-1000}"
     image: rocker/verse:4.5.0
     container_name: quarto-render
     volumes:
